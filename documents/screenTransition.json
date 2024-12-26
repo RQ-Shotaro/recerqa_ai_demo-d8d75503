@@ -1,0 +1,41 @@
+{
+  "key": "screenTransition",
+  "value": [
+    {
+      "id": "発注受付",
+      "value": "{\n  \"mermaid\": \"graph LR\\n    Login[ログイン画面] --> MainMenu[メインメニュー]\\n    MainMenu --> Chat[チャット発注画面]\\n    MainMenu --> Voice[音声発注画面]\\n    MainMenu --> EC[ECサイト発注画面]\\n    Chat --> OrderConf[発注内容確認画面]\\n    Voice --> OrderConf\\n    EC --> OrderConf\\n    OrderConf --> OrderHist[発注履歴一覧画面]\\n    OrderConf --> OrderComp[発注完了画面]\\n    OrderHist --> OrderDetail[発注詳細画面]\\n    OrderComp --> MainMenu\"\n}"
+    },
+    {
+      "id": "発注サポート",
+      "value": "{\n  \"mermaid\": \"graph LR\\n    login[ログイン画面] --> home[ホーム画面]\\n    home --> search[商品検索画面]\\n    home --> history[発注履歴画面]\\n    search --> detail[商品詳細画面]\\n    search --> recommend[商品提案画面]\\n    detail --> cart[買い物かご画面]\\n    recommend --> cart\\n    cart --> order[発注情報入力画面]\\n    order --> confirm[発注確認画面]\\n    confirm --> complete[発注完了画面]\\n    history --> detail\\n    chat[AIチャットサポート画面] --- search\\n    chat --- cart\\n    chat --- order\\n    qa[よくある質問画面] --- search\\n    qa --- cart\\n    qa --- order\"\n}"
+    },
+    {
+      "id": "自動発注",
+      "value": "{\n  \"mermaid\": \"graph LR\\n    Login[ログイン画面] --> Dashboard[自動発注ダッシュボード]\\n    Dashboard --> StockLevel[在庫レベル設定画面]\\n    Dashboard --> OrderHistory[取引履歴分析画面]\\n    Dashboard --> DemandForecast[需要予測画面]\\n    StockLevel --> AutoOrderSetting[自動発注設定画面]\\n    OrderHistory --> AutoOrderSetting\\n    DemandForecast --> AutoOrderSetting\\n    AutoOrderSetting --> OrderConfirm[発注内容確認画面]\\n    OrderConfirm --> OrderList[発注一覧画面]\\n    OrderList --> OrderDetail[発注詳細画面]\\n    Dashboard --> OrderList\\n    Dashboard --> Report[レポート画面]\"\n}"
+    },
+    {
+      "id": "仕入調整",
+      "value": "{\n    \"mermaid\": \"graph LR\\n    発注一覧画面 --> 発注詳細画面\\n    発注詳細画面 --> 仕入条件調整画面\\n    仕入条件調整画面 --> 条件履歴一覧\\n    仕入条件調整画面 --> 調整結果確認画面\\n    調整結果確認画面 --> 調整完了画面\\n    調整結果確認画面 --> 承認依頼画面\\n    承認依頼画面 --> 再調整画面\\n    再調整画面 --> 仕入条件調整画面\\n    調整完了画面 --> 発注一覧画面\"\n}"
+    },
+    {
+      "id": "仕入提案",
+      "value": "{\n    \"mermaid\": \"graph LR\\n    Login[ログイン画面] --> Dashboard[ダッシュボード画面]\\n    Dashboard --> PurchaseAnalysis[仕入分析画面]\\n    PurchaseAnalysis --> DemandPredict[需要予測画面]\\n    DemandPredict --> PurchaseProposal[仕入提案画面]\\n    PurchaseProposal --> PurchaseDetail[仕入詳細設定画面]\\n    PurchaseDetail --> PurchaseConfirm[仕入確認画面]\\n    PurchaseConfirm --> PurchaseComplete[仕入完了画面]\\n    PurchaseComplete --> Dashboard\"\n}"
+    },
+    {
+      "id": "見積もり",
+      "value": "{\n    \"mermaid\": \"graph LR\\n    Login[ログイン画面] --> Main[メインメニュー]\\n    Main --> QuoteList[見積一覧画面]\\n    QuoteList --> QuoteDetail[見積詳細画面]\\n    QuoteDetail --> QuoteRequest[見積依頼画面]\\n    QuoteRequest --> AIConfig[AIエージェント設定画面]\\n    QuoteDetail --> QuoteResponse[見積回答画面]\\n    QuoteDetail --> QuoteHistory[見積履歴画面]\\n    QuoteResponse --> QuoteConfirm[見積確認画面]\\n    QuoteConfirm --> QuoteList\\n    QuoteHistory --> QuoteAnalytics[見積分析画面]\"\n}"
+    },
+    {
+      "id": "納期・金額調整",
+      "value": "{\n  \"mermaid\": \"graph LR\\n    LOGIN[ログイン画面] --> MENU[メインメニュー]\\n    MENU --> NEGLIST[納期金額調整一覧]\\n    NEGLIST --> NEGDETAIL[納期金額調整詳細]\\n    NEGDETAIL --> HISTORY[過去取引履歴]\\n    NEGDETAIL --> AISUGGESTION[AI提案内容]\\n    AISUGGESTION --> NEGOTIATE[調整実行画面]\\n    NEGOTIATE --> CONFIRM[調整内容確認]\\n    CONFIRM --> RESULT[調整結果画面]\\n    RESULT --> REPORT[調整結果レポート]\\n    RESULT --> NEGLIST\\n    MENU --> DASHBOARD[調整状況ダッシュボード]\\n    DASHBOARD --> NEGLIST\"\n}"
+    },
+    {
+      "id": "情報連携",
+      "value": "{\n    \"mermaid\": \"graph LR\\n    Login[ログイン画面] --> Dashboard[受発注ダッシュボード]\\n    Dashboard --> OrderList[受発注一覧]\\n    OrderList --> OrderDetail[受発注詳細]\\n    OrderDetail --> PurchaseStatus[仕入情報確認]\\n    PurchaseStatus --> DeliverySchedule[納期金額確認]\\n    DeliverySchedule --> CustomerResponse[得意先回答画面]\\n    CustomerResponse --> OrderList\\n    Dashboard --> InfoSync[情報連携状況]\\n    InfoSync --> SalesAgentConfig[販売AIエージェント設定]\\n    InfoSync --> PurchaseAgentConfig[仕入AIエージェント設定]\\n    SalesAgentConfig --> InfoSync\\n    PurchaseAgentConfig --> InfoSync\"\n}"
+    },
+    {
+      "id": "一元管理",
+      "value": "{\n    \"mermaid\": \"graph LR\\n    Login[ログイン画面] --> Dashboard[受発注業務ダッシュボード]\\n    Dashboard --> OrderList[受発注データ一覧]\\n    Dashboard --> Analytics[分析レポート]\\n    Dashboard --> Calendar[納期カレンダー]\\n    OrderList --> OrderDetail[受発注データ詳細]\\n    OrderList --> OrderEdit[受発注データ編集]\\n    OrderDetail --> OrderHistory[取引履歴]\\n    Analytics --> SupplierAnalytics[仕入先分析]\\n    Analytics --> CustomerAnalytics[得意先分析]\\n    Analytics --> ProductAnalytics[商品分析]\\n    Calendar --> DeliverySchedule[入出荷スケジュール]\\n    Calendar --> DeliveryDetail[入出荷詳細]\"\n}"
+    }
+  ]
+}

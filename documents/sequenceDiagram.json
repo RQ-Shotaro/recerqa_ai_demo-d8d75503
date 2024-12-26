@@ -1,0 +1,41 @@
+{
+  "key": "sequenceDiagram",
+  "value": [
+    {
+      "id": "発注受付",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    autonumber\\n    actor User as 得意先\\n    participant Frontend\\n    participant Backend\\n    participant DB\\n    Note over User,DB: チャット発注フロー\\n    User->>Frontend: チャットメッセージ入力\\n    Frontend->>Backend: チャットメッセージ送信\\n    Backend->>Backend: メッセージ解析\\n    Backend->>DB: 発注データ登録\\n    DB-->>Backend: 登録完了\\n    Backend-->>Frontend: 発注受付完了\\n    Frontend-->>User: 発注完了表示\\n    Note over User,DB: 音声発注フロー\\n    User->>Frontend: 音声入力\\n    Frontend->>Backend: 音声データ送信\\n    Backend->>Backend: 音声認識・解析\\n    Backend->>DB: 発注データ登録\\n    DB-->>Backend: 登録完了\\n    Backend-->>Frontend: 発注受付完了\\n    Frontend-->>User: 発注完了表示\\n    Note over User,DB: ECサイト発注フロー\\n    User->>Frontend: 商品選択・数量入力\\n    Frontend->>Backend: 発注データ送信\\n    Backend->>DB: 発注データ登録\\n    DB-->>Backend: 登録完了\\n    Backend-->>Frontend: 発注受付完了\\n    Frontend-->>User: 発注完了表示\"\n}"
+    },
+    {
+      "id": "発注サポート",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    User->>Frontend: 商品提案リクエスト\\n    Frontend->>Backend: 商品提案API呼び出し\\n    Backend->>DB: 取引履歴データ取得\\n    DB->>Backend: 取引履歴データ返却\\n    Backend->>DB: 商品情報取得\\n    DB->>Backend: 商品情報返却\\n    Backend->>Backend: AIモデルによる商品提案生成\\n    Backend->>Frontend: 推奨商品リスト返却\\n    Frontend->>User: 推奨商品表示\\n    User->>Frontend: 商品に関する質問入力\\n    Frontend->>Backend: 質問応答API呼び出し\\n    Backend->>Backend: AIモデルによる回答生成\\n    Backend->>Frontend: 回答返却\\n    Frontend->>User: 回答表示\\n    User->>Frontend: 発注手続き開始\\n    Frontend->>Backend: 発注手続きガイドAPI呼び出し\\n    Backend->>Backend: ガイド情報生成\\n    Backend->>Frontend: 発注手続きガイド返却\\n    Frontend->>User: 発注手続きガイド表示\"\n}"
+    },
+    {
+      "id": "自動発注",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    actor 卸商社担当者\\n    participant Frontend\\n    participant Backend\\n    participant DB\\n    卸商社担当者->>Frontend: 自動発注ダッシュボード表示\\n    Frontend->>Backend: 自動発注設定情報取得要求\\n    Backend->>DB: 在庫レベル取得\\n    DB-->>Backend: 在庫データ返却\\n    Backend->>DB: 取引履歴取得\\n    DB-->>Backend: 取引履歴データ返却\\n    Backend->>DB: 需要予測取得\\n    DB-->>Backend: 需要予測データ返却\\n    Backend-->>Frontend: 自動発注設定情報返却\\n    Frontend-->>卸商社担当者: 自動発注設定画面表示\\n    卸商社担当者->>Frontend: 自動発注設定変更\\n    Frontend->>Backend: 自動発注設定更新要求\\n    Backend->>DB: 自動発注設定保存\\n    DB-->>Backend: 保存完了通知\\n    Backend-->>Frontend: 設定更新完了通知\\n    Frontend-->>卸商社担当者: 更新完了表示\\n    Note over Backend: 定期的に在庫チェック実行\\n    Backend->>DB: 在庫レベル確認\\n    DB-->>Backend: 在庫データ返却\\n    Backend->>DB: 発注データ登録\\n    DB-->>Backend: 登録完了通知\\n    Backend-->>Frontend: 自動発注実行通知\\n    Frontend-->>卸商社担当者: 自動発注完了通知表示\"\n}"
+    },
+    {
+      "id": "仕入調整",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    autonumber\\n    actor User\\n    User ->> Frontend: 発注内容調整画面を開く\\n    Frontend ->> Backend: 調整対象の発注データを要求\\n    Backend ->> DB: 発注データを取得\\n    DB -->> Backend: 発注データ\\n    Backend -->> Frontend: 発注データ\\n    Frontend -->> User: 発注内容調整画面を表示\\n    User ->> Frontend: 調整内容を入力\\n    Frontend ->> Backend: 調整内容をAIに分析依頼\\n    Backend ->> Backend: AIによる発注内容の分析と最適化\\n    Backend ->> DB: 調整提案を保存\\n    DB -->> Backend: 保存完了\\n    Backend -->> Frontend: 調整提案を返却\\n    Frontend -->> User: 調整提案を表示\\n    User ->> Frontend: 調整内容を確認承認\\n    Frontend ->> Backend: 調整内容の確定を要求\\n    Backend ->> DB: 調整内容を確定保存\\n    DB -->> Backend: 保存完了\\n    Backend -->> Frontend: 確定完了通知\\n    Frontend -->> User: 調整完了を表示\"\n}"
+    },
+    {
+      "id": "仕入提案",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    actor 卸商社担当者\\n    participant Frontend\\n    participant Backend\\n    participant DB\\n    卸商社担当者->>Frontend: 仕入提案画面を開く\\n    Frontend->>Backend: 過去の販売データと市場動向を要求\\n    Backend->>DB: 販売履歴データを取得\\n    DB-->>Backend: 販売履歴データを返却\\n    Backend->>DB: 市場動向データを取得\\n    DB-->>Backend: 市場動向データを返却\\n    Backend->>Backend: AIモデルによる需要予測と\\n仕入量計算\\n    Backend-->>Frontend: 仕入提案データを返却\\n    Frontend-->>卸商社担当者: 仕入提案を表示\\n    卸商社担当者->>Frontend: 提案内容を確認\\n    Frontend->>Backend: 提案内容を保存\\n    Backend->>DB: 提案データを登録\\n    DB-->>Backend: 登録完了通知\\n    Backend-->>Frontend: 保存完了通知\\n    Frontend-->>卸商社担当者: 完了メッセージを表示\"\n}"
+    },
+    {
+      "id": "見積もり",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    actor User\\n    participant Frontend\\n    participant Backend\\n    participant DB\\n    alt 見積依頼\\n        User->>Frontend: 見積依頼画面を開く\\n        Frontend->>Backend: 見積依頼データを取得\\n        Backend->>DB: 見積対象商品データを取得\\n        DB-->>Backend: 商品データ\\n        Backend-->>Frontend: 見積データ\\n        Frontend-->>User: 見積依頼画面を表示\\n        User->>Frontend: 見積依頼を実行\\n        Frontend->>Backend: 見積依頼データを送信\\n        Backend->>DB: 見積依頼を登録\\n        DB-->>Backend: 登録完了\\n        Backend-->>Frontend: 処理完了通知\\n        Frontend-->>User: 完了メッセージを表示\\n    else 見積回答取込\\n        User->>Frontend: 見積回答画面を開く\\n        Frontend->>Backend: 見積回答データを要求\\n        Backend->>DB: 見積データを取得\\n        DB-->>Backend: 見積データ\\n        Backend-->>Frontend: 見積回答データ\\n        Frontend-->>User: 見積回答画面を表示\\n        User->>Frontend: 見積回答を入力\\n        Frontend->>Backend: 見積回答データを送信\\n        Backend->>DB: 見積回答を登録\\n        DB-->>Backend: 登録完了\\n        Backend-->>Frontend: 処理完了通知\\n        Frontend-->>User: 完了メッセージを表示\\n    end\"\n}"
+    },
+    {
+      "id": "納期・金額調整",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    User->>Frontend: 納期金額調整画面を開く\\n    Frontend->>Backend: 調整対象データ取得要求\\n    Backend->>DB: 発注データ取得\\n    DB->>Backend: 発注データ返却\\n    Backend->>Frontend: 調整対象データ返却\\n    Frontend->>User: 調整対象データ表示\\n    User->>Frontend: 納期/金額調整を要求\\n    Frontend->>Backend: 調整処理要求\\n    Backend->>AIエージェント: 調整案生成要求\\n    AIエージェント->>Backend: 調整案提案\\n    Backend->>DB: 調整案保存\\n    DB->>Backend: 保存完了通知\\n    Backend->>Frontend: 調整結果返却\\n    Frontend->>User: 調整結果表示\\n    User->>Frontend: 調整結果承認\\n    Frontend->>Backend: 調整確定要求\\n    Backend->>DB: 調整結果確定\\n    DB->>Backend: 確定完了通知\\n    Backend->>Frontend: 確定完了通知\\n    Frontend->>User: 完了通知表示\"\n}"
+    },
+    {
+      "id": "情報連携",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    actor User\\n    participant Frontend\\n    participant Backend\\n    participant DB\\n    User->>Frontend: 情報連携画面を開く\\n    Frontend->>Backend: 情報連携状況の取得要求\\n    Backend->>DB: 情報連携ログの取得\\n    DB-->>Backend: ログデータ返却\\n    Backend-->>Frontend: 情報連携状況を返却\\n    Frontend-->>User: 情報連携状況を表示\\n    User->>Frontend: 仕入側の情報を確認\\n    Frontend->>Backend: 仕入情報の取得要求\\n    Backend->>DB: 仕入データの取得\\n    DB-->>Backend: 仕入データ返却\\n    Backend-->>Frontend: 仕入情報を返却\\n    Frontend-->>User: 仕入情報を表示\\n    User->>Frontend: 販売側への情報連携指示\\n    Frontend->>Backend: 情報連携処理要求\\n    Backend->>DB: 連携情報の保存\\n    DB-->>Backend: 保存完了通知\\n    Backend->>Backend: AIエージェントによる情報分析\\n    Backend->>DB: 分析結果の保存\\n    DB-->>Backend: 保存完了通知\\n    Backend-->>Frontend: 連携完了通知\\n    Frontend-->>User: 連携完了を表示\"\n}"
+    },
+    {
+      "id": "一元管理",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    autonumber\\n    User->>Frontend: ダッシュボード画面を開く\\n    Frontend->>Backend: 受発注データ取得要求\\n    Backend->>DB: 受発注データ検索\\n    DB->>Backend: 受発注データ返却\\n    Backend->>Backend: データ集計処理\\n    Backend->>Frontend: 集計済み受発注データ返却\\n    Frontend->>Frontend: ダッシュボード表示生成\\n    Frontend->>User: ダッシュボード表示\\n    User->>Frontend: データ詳細表示要求\\n    Frontend->>Backend: 詳細データ取得要求\\n    Backend->>DB: 詳細データ検索\\n    DB->>Backend: 詳細データ返却\\n    Backend->>Frontend: 詳細データ返却\\n    Frontend->>User: 詳細データ表示\\n    User->>Frontend: データ更新要求\\n    Frontend->>Backend: データ更新要求送信\\n    Backend->>DB: データ更新実行\\n    DB->>Backend: 更新結果返却\\n    Backend->>Frontend: 更新結果通知\\n    Frontend->>User: 更新完了通知\"\n}"
+    }
+  ]
+}

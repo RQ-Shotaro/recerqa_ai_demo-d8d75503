@@ -1,0 +1,37 @@
+{
+  "key": "commonComponent",
+  "value": [
+    {
+      "id": "COM-001",
+      "category": "共通",
+      "fileName": "Header.tsx",
+      "description": "ヘッダーコンポーネント",
+      "props": "null",
+      "screensIds": "['SCR-001','SCR-002','SCR-003','SCR-004','SCR-005','SCR-006','SCR-007','SCR-008','SCR-009','SCR-010','SCR-011','SCR-012','SCR-013','SCR-014','SCR-015','SCR-016','SCR-017','SCR-018','SCR-019','SCR-020','SCR-021','SCR-022','SCR-023','SCR-024','SCR-025','SCR-026','SCR-027','SCR-028','SCR-029','SCR-030','SCR-031','SCR-032','SCR-033','SCR-034','SCR-035','SCR-036','SCR-037','SCR-038','SCR-039','SCR-040','SCR-041','SCR-042','SCR-043','SCR-044','SCR-045','SCR-046','SCR-047','SCR-048','SCR-049','SCR-050','SCR-051','SCR-052','SCR-053','SCR-054','SCR-055','SCR-056','SCR-057','SCR-058','SCR-059','SCR-060','SCR-061','SCR-062','SCR-063','SCR-064','SCR-065','SCR-066','SCR-067','SCR-068','SCR-069','SCR-070','SCR-071','SCR-072','SCR-073','SCR-074','SCR-075','SCR-076']"
+    },
+    {
+      "id": "COM-002",
+      "category": "共通",
+      "fileName": "Footer.tsx",
+      "description": "フッターコンポーネント",
+      "props": "null",
+      "screensIds": "['SCR-001','SCR-002','SCR-003','SCR-004','SCR-005','SCR-006','SCR-007','SCR-008','SCR-009','SCR-010','SCR-011','SCR-012','SCR-013','SCR-014','SCR-015','SCR-016','SCR-017','SCR-018','SCR-019','SCR-020','SCR-021','SCR-022','SCR-023','SCR-024','SCR-025','SCR-026','SCR-027','SCR-028','SCR-029','SCR-030','SCR-031','SCR-032','SCR-033','SCR-034','SCR-035','SCR-036','SCR-037','SCR-038','SCR-039','SCR-040','SCR-041','SCR-042','SCR-043','SCR-044','SCR-045','SCR-046','SCR-047','SCR-048','SCR-049','SCR-050','SCR-051','SCR-052','SCR-053','SCR-054','SCR-055','SCR-056','SCR-057','SCR-058','SCR-059','SCR-060','SCR-061','SCR-062','SCR-063','SCR-064','SCR-065','SCR-066','SCR-067','SCR-068','SCR-069','SCR-070','SCR-071','SCR-072','SCR-073','SCR-074','SCR-075','SCR-076']"
+    },
+    {
+      "id": "COM-003",
+      "category": "共通",
+      "fileName": "SideBar.tsx",
+      "description": "サイドバーコンポーネント",
+      "props": "null",
+      "screensIds": "['SCR-021','SCR-022','SCR-023','SCR-024','SCR-025','SCR-026','SCR-027','SCR-048','SCR-049','SCR-050','SCR-051','SCR-052','SCR-053','SCR-054','SCR-055','SCR-056','SCR-057','SCR-058','SCR-059','SCR-060','SCR-061','SCR-062','SCR-063','SCR-064','SCR-065','SCR-066','SCR-067','SCR-068','SCR-069','SCR-070','SCR-071','SCR-072','SCR-073','SCR-074','SCR-075','SCR-076']"
+    },
+    {
+      "id": "COM-004",
+      "category": "共通",
+      "fileName": "SideMenu.tsx",
+      "description": "サイドメニューコンポーネント",
+      "props": "null",
+      "screensIds": "['SCR-048', 'SCR-049', 'SCR-050', 'SCR-051', 'SCR-052', 'SCR-053', 'SCR-054', 'SCR-055','SCR-056', 'SCR-057', 'SCR-058', 'SCR-059','SCR-060','SCR-061','SCR-062','SCR-063','SCR-064','SCR-065','SCR-066','SCR-067','SCR-068','SCR-069','SCR-070','SCR-071','SCR-072','SCR-073','SCR-074','SCR-075','SCR-076']"
+    }
+  ]
+}
