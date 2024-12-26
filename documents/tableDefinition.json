@@ -1,0 +1,465 @@
+{
+  "key": "tableDefinition",
+  "value": [
+    {
+      "id": "TAB-001",
+      "table": "customers",
+      "column": "customer_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "得意先ID"
+    },
+    {
+      "id": "TAB-002",
+      "table": "customers",
+      "column": "customer_name",
+      "dataType": "TEXT",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "得意先名"
+    },
+    {
+      "id": "TAB-003",
+      "table": "customers",
+      "column": "contact_info",
+      "dataType": "JSONB",
+      "regulation": null,
+      "defaultValue": "{\"email\": \"\", \"phone\": \"\", \"address\": \"\"}",
+      "foreignKey": null,
+      "description": "得意先の連絡先情報(メールアドレス、電話番号、住所など)"
+    },
+    {
+      "id": "TAB-004",
+      "table": "suppliers",
+      "column": "supplier_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "仕入先ID"
+    },
+    {
+      "id": "TAB-005",
+      "table": "suppliers",
+      "column": "supplier_name",
+      "dataType": "TEXT",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "仕入先名"
+    },
+    {
+      "id": "TAB-006",
+      "table": "suppliers",
+      "column": "contact_info",
+      "dataType": "JSONB",
+      "regulation": null,
+      "defaultValue": "{\"email\": \"\", \"phone\": \"\", \"address\": \"\"}",
+      "foreignKey": null,
+      "description": "仕入先の連絡先情報(メールアドレス、電話番号、住所など)"
+    },
+    {
+      "id": "TAB-007",
+      "table": "products",
+      "column": "product_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "商品ID"
+    },
+    {
+      "id": "TAB-008",
+      "table": "products",
+      "column": "product_name",
+      "dataType": "TEXT",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "商品名"
+    },
+    {
+      "id": "TAB-009",
+      "table": "products",
+      "column": "unit_price",
+      "dataType": "NUMERIC",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "商品の単価"
+    },
+    {
+      "id": "TAB-010",
+      "table": "orders",
+      "column": "order_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "発注ID"
+    },
+    {
+      "id": "TAB-011",
+      "table": "orders",
+      "column": "customer_id",
+      "dataType": "UUID",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": "customers(customer_id)",
+      "description": "得意先ID(外部キー)"
+    },
+    {
+      "id": "TAB-012",
+      "table": "orders",
+      "column": "order_date",
+      "dataType": "TIMESTAMP WITH TIME ZONE",
+      "regulation": "NOT NULL",
+      "defaultValue": "now()",
+      "foreignKey": null,
+      "description": "発注日"
+    },
+    {
+      "id": "TAB-013",
+      "table": "orders",
+      "column": "order_status",
+      "dataType": "TEXT",
+      "regulation": "NOT NULL",
+      "defaultValue": "'Pending'",
+      "foreignKey": null,
+      "description": "発注ステータス（Pending,Confirmed,Shipped,Completedなど）"
+    },
+    {
+      "id": "TAB-014",
+      "table": "order_items",
+      "column": "order_item_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "注文明細ID"
+    },
+    {
+      "id": "TAB-015",
+      "table": "order_items",
+      "column": "order_id",
+      "dataType": "UUID",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": "orders(order_id)",
+      "description": "発注ID(外部キー)"
+    },
+    {
+      "id": "TAB-016",
+      "table": "order_items",
+      "column": "product_id",
+      "dataType": "UUID",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": "products(product_id)",
+      "description": "商品ID(外部キー)"
+    },
+    {
+      "id": "TAB-017",
+      "table": "order_items",
+      "column": "quantity",
+      "dataType": "INTEGER",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "注文数量"
+    },
+    {
+      "id": "TAB-018",
+      "table": "order_items",
+      "column": "unit_price",
+      "dataType": "NUMERIC",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "注文時の単価"
+    },
+    {
+      "id": "TAB-019",
+      "table": "purchase_orders",
+      "column": "purchase_order_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "仕入発注ID"
+    },
+    {
+      "id": "TAB-020",
+      "table": "purchase_orders",
+      "column": "supplier_id",
+      "dataType": "UUID",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": "suppliers(supplier_id)",
+      "description": "仕入先ID(外部キー)"
+    },
+    {
+      "id": "TAB-021",
+      "table": "purchase_orders",
+      "column": "order_date",
+      "dataType": "TIMESTAMP WITH TIME ZONE",
+      "regulation": "NOT NULL",
+      "defaultValue": "now()",
+      "foreignKey": null,
+      "description": "仕入発注日"
+    },
+    {
+      "id": "TAB-022",
+      "table": "purchase_orders",
+      "column": "order_status",
+      "dataType": "TEXT",
+      "regulation": "NOT NULL",
+      "defaultValue": "'Pending'",
+      "foreignKey": null,
+      "description": "仕入発注ステータス（Pending,Confirmed,Shipped,Completedなど）"
+    },
+    {
+      "id": "TAB-023",
+      "table": "purchase_order_items",
+      "column": "purchase_order_item_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "仕入注文明細ID"
+    },
+    {
+      "id": "TAB-024",
+      "table": "purchase_order_items",
+      "column": "purchase_order_id",
+      "dataType": "UUID",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": "purchase_orders(purchase_order_id)",
+      "description": "仕入発注ID(外部キー)"
+    },
+    {
+      "id": "TAB-025",
+      "table": "purchase_order_items",
+      "column": "product_id",
+      "dataType": "UUID",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": "products(product_id)",
+      "description": "商品ID(外部キー)"
+    },
+    {
+      "id": "TAB-026",
+      "table": "purchase_order_items",
+      "column": "quantity",
+      "dataType": "INTEGER",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "仕入注文数量"
+    },
+    {
+      "id": "TAB-027",
+      "table": "purchase_order_items",
+      "column": "unit_price",
+      "dataType": "NUMERIC",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "仕入注文時の単価"
+    },
+    {
+      "id": "TAB-028",
+      "table": "quotes",
+      "column": "quote_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "見積ID"
+    },
+    {
+      "id": "TAB-029",
+      "table": "quotes",
+      "column": "supplier_id",
+      "dataType": "UUID",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": "suppliers(supplier_id)",
+      "description": "仕入先ID(外部キー)"
+    },
+    {
+      "id": "TAB-030",
+      "table": "quotes",
+      "column": "quote_date",
+      "dataType": "TIMESTAMP WITH TIME ZONE",
+      "regulation": "NOT NULL",
+      "defaultValue": "now()",
+      "foreignKey": null,
+      "description": "見積日"
+    },
+    {
+      "id": "TAB-031",
+      "table": "quotes",
+      "column": "valid_until",
+      "dataType": "TIMESTAMP WITH TIME ZONE",
+      "regulation": null,
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "見積有効期限"
+    },
+    {
+      "id": "TAB-032",
+      "table": "quote_items",
+      "column": "quote_item_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "見積明細ID"
+    },
+    {
+      "id": "TAB-033",
+      "table": "quote_items",
+      "column": "quote_id",
+      "dataType": "UUID",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": "quotes(quote_id)",
+      "description": "見積ID(外部キー)"
+    },
+    {
+      "id": "TAB-034",
+      "table": "quote_items",
+      "column": "product_id",
+      "dataType": "UUID",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": "products(product_id)",
+      "description": "商品ID(外部キー)"
+    },
+    {
+      "id": "TAB-035",
+      "table": "quote_items",
+      "column": "quantity",
+      "dataType": "INTEGER",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "見積数量"
+    },
+    {
+      "id": "TAB-036",
+      "table": "quote_items",
+      "column": "unit_price",
+      "dataType": "NUMERIC",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "見積単価"
+    },
+    {
+      "id": "TAB-037",
+      "table": "inventory",
+      "column": "inventory_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "在庫ID"
+    },
+    {
+      "id": "TAB-038",
+      "table": "inventory",
+      "column": "product_id",
+      "dataType": "UUID",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": "products(product_id)",
+      "description": "商品ID(外部キー)"
+    },
+    {
+      "id": "TAB-039",
+      "table": "inventory",
+      "column": "stock_quantity",
+      "dataType": "INTEGER",
+      "regulation": "NOT NULL",
+      "defaultValue": "0",
+      "foreignKey": null,
+      "description": "在庫数量"
+    },
+    {
+      "id": "TAB-040",
+      "table": "ai_agents_log",
+      "column": "log_id",
+      "dataType": "UUID",
+      "regulation": "Primary Key",
+      "defaultValue": "uuid_generate_v4()",
+      "foreignKey": null,
+      "description": "AIエージェントログID"
+    },
+    {
+      "id": "TAB-041",
+      "table": "ai_agents_log",
+      "column": "agent_type",
+      "dataType": "TEXT",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "エージェントの種類(販売AI、仕入AI)"
+    },
+    {
+      "id": "TAB-042",
+      "table": "ai_agents_log",
+      "column": "log_time",
+      "dataType": "TIMESTAMP WITH TIME ZONE",
+      "regulation": "NOT NULL",
+      "defaultValue": "now()",
+      "foreignKey": null,
+      "description": "ログ発生時刻"
+    },
+    {
+      "id": "TAB-043",
+      "table": "ai_agents_log",
+      "column": "log_message",
+      "dataType": "TEXT",
+      "regulation": "NOT NULL",
+      "defaultValue": null,
+      "foreignKey": null,
+      "description": "ログメッセージ"
+    },
+    {
+      "id": "TAB-044",
+      "table": "ai_agents_log",
+      "column": "related_order_id",
+      "dataType": "UUID",
+      "regulation": null,
+      "defaultValue": null,
+      "foreignKey": "orders(order_id)",
+      "description": "関連する発注ID(外部キー)"
+    },
+    {
+      "id": "TAB-045",
+      "table": "ai_agents_log",
+      "column": "related_purchase_order_id",
+      "dataType": "UUID",
+      "regulation": null,
+      "defaultValue": null,
+      "foreignKey": "purchase_orders(purchase_order_id)",
+      "description": "関連する仕入発注ID(外部キー)"
+    },
+    {
+      "id": "TAB-046",
+      "table": "ai_agents_log",
+      "column": "related_quote_id",
+      "dataType": "UUID",
+      "regulation": null,
+      "defaultValue": null,
+      "foreignKey": "quotes(quote_id)",
+      "description": "関連する見積ID(外部キー)"
+    }
+  ]
+}

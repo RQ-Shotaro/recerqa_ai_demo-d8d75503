@@ -1,0 +1,41 @@
+{
+  "key": "asisOperationFlow",
+  "value": [
+    {
+      "id": "得意先からの発注受付（チャット、音声、EC）",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    participant 得意先\\n    participant 販売AIエージェント\\n    participant RECERQA販売\\n    得意先->>販売AIエージェント: チャット/音声/ECで発注\\n    販売AIエージェント->>RECERQA販売: 発注内容確認\\n    RECERQA販売->>販売AIエージェント: 在庫/価格確認\\n    alt 在庫あり\\n        販売AIエージェント->>得意先: 受注確認/納期回答\\n        得意先->>販売AIエージェント: 承認\\n        販売AIエージェント->>RECERQA販売: 受注確定\\n    else 在庫なし\\n        販売AIエージェント->>得意先: 代替商品提案/入荷予定案内\\n        得意先->>販売AIエージェント: 選択/決定\\n        販売AIエージェント->>RECERQA販売: 受注確定\\n    end\"\n}"
+    },
+    {
+      "id": "得意先向けAIエージェントによる発注サポート",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    participant Customer as 得意先\\n    participant SalesAI as 販売AIエージェント\\n    participant Wholesaler as 卸商社担当者\\n    participant PurchaseAI as 仕入AIエージェント\\n    participant Supplier as 仕入先\\n\\n    Customer->>SalesAI: 商品発注\\n    SalesAI-->>SalesAI: 過去の取引履歴確認\\n    SalesAI-->>SalesAI: 発注内容の最適化チェック\\n    alt 通常発注パターン\\n        SalesAI->>Wholesaler: 発注内容確認\\n        Wholesaler->>PurchaseAI: 発注承認\\n        PurchaseAI->>Supplier: 発注処理\\n        Supplier->>PurchaseAI: 受注確認\\n        PurchaseAI->>SalesAI: 納期金額確定\\n        SalesAI->>Customer: 発注完了通知\\n    else 見積必要なケース\\n        SalesAI->>PurchaseAI: 見積依頼\\n        PurchaseAI->>Supplier: 見積依頼送信\\n        Supplier->>PurchaseAI: 見積回答\\n        PurchaseAI->>SalesAI: 見積内容連携\\n        SalesAI->>Customer: 見積提示\\n        Customer->>SalesAI: 見積承認\\n        SalesAI->>PurchaseAI: 発注確定\\n        PurchaseAI->>Supplier: 発注処理\\n        Supplier->>PurchaseAI: 受注確認\\n        PurchaseAI->>SalesAI: 納期金額確定\\n        SalesAI->>Customer: 発注完了通知\\n    end\"\n}"
+    },
+    {
+      "id": "仕入先への発注（自動発注、AIエージェントによる調整）",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    participant T as 得意先\\n    participant SA as 販売AI\\n    participant CS as 卸商社\\n    participant PA as 仕入AI\\n    participant S as 仕入先\\n\\n    T->>SA: 商品発注\\n    SA->>CS: 発注内容確認\\n    alt 在庫あり\\n        CS->>SA: 在庫確認OK\\n        SA->>T: 受注確定通知\\n    else 在庫なし\\n        CS->>PA: 発注依頼\\n        PA->>S: 自動発注\\n        S->>PA: 納期金額回答\\n        PA->>SA: 納期金額連携\\n        SA->>T: 納期金額提示\\n        T->>SA: 承認\\n        SA->>CS: 発注確定\\n    end\"\n}"
+    },
+    {
+      "id": "仕入先向けAIエージェントによる調整機能",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    participant 仕入先\\n    participant 仕入AI\\n    participant システム\\n    participant 販売AI\\n    participant 得意先\\n    得意先->>販売AI: 発注依頼\\n    販売AI->>システム: 発注内容確認\\n    システム->>仕入AI: 在庫確認/見積依頼\\n    仕入AI->>仕入先: 見積依頼\\n    仕入先->>仕入AI: 見積回答 納期金額提示\\n    仕入AI->>システム: 見積内容チェック\\n    システム->>販売AI: 見積内容連携\\n    販売AI->>得意先: 納期金額回答\\n    得意先->>販売AI: 発注確定\\n    販売AI->>システム: 発注登録\\n    システム->>仕入AI: 発注指示\\n    仕入AI->>仕入先: 発注書送信\\n    仕入先->>仕入AI: 受注確認\\n    仕入AI->>システム: ステータス更新\\n    システム->>販売AI: 発注完了通知\\n    販売AI->>得意先: 受付完了通知\"\n}"
+    },
+    {
+      "id": "需要予測に基づく仕入の提案",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    participant D as 需要予測AI\\n    participant R as RECERQA AI\\n    participant W as 卸商社担当者\\n    participant S as 仕入先\\n    D->>R: 需要予測データを送信\\n    R->>R: 予測に基づく最適発注量を算出\\n    R->>W: 仕入提案を通知\\n    W->>R: 提案内容を確認承認\\n    R->>S: 発注データを送信\\n    S->>R: 受注確認\\n    R->>R: 発注情報を記録\\n    R->>W: 発注完了を通知\\n    S->>R: 納期金額の回答\\n    R->>R: 取引条件を確認\\n    R->>W: 取引条件を通知\"\n}"
+    },
+    {
+      "id": "見積もり依頼、回答のAIエージェントによる自動化",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    participant 得意先\\n    participant 販売AI\\n    participant 卸商社\\n    participant 仕入AI\\n    participant 仕入先\\n    得意先->>販売AI: 見積依頼\\n    販売AI->>卸商社: 見積依頼内容確認\\n    卸商社->>仕入AI: 仕入先への見積依頼指示\\n    仕入AI->>仕入先: 見積依頼送信\\n    仕入先->>仕入AI: 見積回答\\n    仕入AI->>卸商社: 見積内容確認依頼\\n    卸商社->>仕入AI: 見積内容承認\\n    仕入AI->>販売AI: 見積情報連携\\n    販売AI->>得意先: 見積回答送信\\n    得意先->>販売AI: 見積内容確認\\n    販売AI->>卸商社: 見積確定通知\\n    卸商社->>仕入AI: 発注処理指示\\n    仕入AI->>仕入先: 発注書送信\"\n}"
+    },
+    {
+      "id": "納期・金額の自動調整",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    participant Client as 得意先\\n    participant SalesAI as RECERQA販売AI\\n    participant Company as 卸商社\\n    participant PurchaseAI as RECERQA仕入AI\\n    participant Supplier as 仕入先\\n\\n    Client->>SalesAI: 見積依頼\\n    SalesAI->>PurchaseAI: 見積情報確認\\n    PurchaseAI->>Supplier: 見積依頼送信\\n    Supplier->>PurchaseAI: 納期金額回答\\n    PurchaseAI->>PurchaseAI: 見積内容確認\\n    PurchaseAI->>SalesAI: 見積情報連携\\n    SalesAI->>SalesAI: 販売価格算出\\n    SalesAI->>Client: 納期金額回答\\n    Client->>SalesAI: 発注確定\\n    SalesAI->>PurchaseAI: 発注情報連携\\n    PurchaseAI->>Supplier: 発注確定\"\n}"
+    },
+    {
+      "id": "販売AIエージェントへの情報連携",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    participant 得意先\\n    participant 販売AIエージェント\\n    participant 受発注システム\\n    participant 仕入AIエージェント\\n    participant 仕入先\\n    得意先->>販売AIエージェント: 発注依頼 チャット音声EC\\n    販売AIエージェント->>受発注システム: 発注内容確認 取引履歴確認\\n    受発注システム->>仕入AIエージェント: 在庫確認 発注要否判断\\n    仕入AIエージェント->>仕入先: 見積依頼 在庫確認\\n    仕入先->>仕入AIエージェント: 見積回答 在庫回答\\n    仕入AIエージェント->>受発注システム: 見積情報連携\\n    受発注システム->>販売AIエージェント: 納期金額情報連携\\n    販売AIエージェント->>得意先: 発注内容確認 納期金額回答\\n    得意先->>販売AIエージェント: 発注確定\\n    販売AIエージェント->>受発注システム: 発注情報登録\\n    受発注システム->>仕入AIエージェント: 発注指示\\n    仕入AIエージェント->>仕入先: 発注実行\"\n}"
+    },
+    {
+      "id": "受発注業務の一元管理",
+      "value": "{\n  \"mermaid\": \"sequenceDiagram\\n    participant 得意先\\n    participant 販売AI\\n    participant 卸商社\\n    participant 仕入AI\\n    participant 仕入先\\n    得意先->>販売AI: 発注依頼\\n    販売AI->>販売AI: 過去取引履歴確認\\n    販売AI->>卸商社: 発注内容確認\\n    卸商社->>仕入AI: 在庫確認/発注依頼\\n    仕入AI->>仕入AI: 需要予測分析\\n    仕入AI->>仕入先: 見積/発注依頼\\n    仕入先->>仕入AI: 見積/納期回答\\n    仕入AI->>仕入AI: 条件妥当性確認\\n    仕入AI->>販売AI: 価格/納期連携\\n    販売AI->>得意先: 見積/納期回答\\n    得意先->>販売AI: 発注確定\\n    販売AI->>仕入AI: 発注確定連携\\n    仕入AI->>仕入先: 発注確定通知\\n    仕入先->>仕入AI: 受注確認\\n    仕入AI->>卸商社: 取引完了報告\\n    卸商社->>卸商社: 取引記録保存\"\n}"
+    }
+  ]
+}
